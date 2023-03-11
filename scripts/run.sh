@@ -47,7 +47,7 @@ config_file=/config/build.config
 
 if [ ! -f $config_file ]; then
     echo "no build.config exits, we will make a new build.config for you."
-    rm .config
+    [ -e .config ] && rm .config
     [ -e /config/seed.config ] && cp -f /config/seed.config .config
     make menuconfig
     rm -f .config.old
