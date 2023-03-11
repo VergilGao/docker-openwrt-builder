@@ -50,4 +50,5 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          ghcr.io/vergilgao/openwrt-builder:lastest
+          ghcr.io/vergilgao/openwrt-builder:1.0
+          ghcr.io/vergilgao/openwrt-builder:latest
