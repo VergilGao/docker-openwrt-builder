@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 start_time=$(date +"%Y%m%d%H%M")
 
 repo_url=`sed '/^url=/!d;s/.*=//' /config/repo`
@@ -64,7 +62,7 @@ mkdir -p /data/logs
 
 make download -j$(nproc)
 if [ -e /config/nproc ] && [ -n "$(cat /config/nproc | sed -n "/^[0-9]\+$/p")" ]; then
-    make V=s -j$(cat /config/nproc) > /data/logs/make-$start_time.log
+    make V=s -j$(cat /config/nproc) ||  (make V=s -j1 > /data/logs/make-$start_time.log))
 else
     make V=s -j1 > /data/logs/make-$start_time.log
 fi
